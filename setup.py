@@ -56,6 +56,8 @@ setuptools.setup(
     tests_require=tests_require,
     test_suite="tests",
     entry_points={
-        "console_scripts": ["data_provider = regional_downscaling.provider.cli:provider_cli"]
-    }
+        "console_scripts": [
+            "data_provider = regional_downscaling.provider.cli:provider_cli"
+        ]
+    },
 )

@@ -1,6 +1,6 @@
 import calendar
-from typing import Union
 from pathlib import Path
+from typing import Union
 
 import cdsapi
 
@@ -63,16 +63,18 @@ def download_cerra_data(
     """
 
     if day and time:
-        date_str = '{0}{1}{2}_{3}'.format(day, month, year, time.split(":")[0])
+        date_str = "{0}{1}{2}_{3}".format(day, month, year, time.split(":")[0])
     elif day and not time:
-        date_str = '{0}{1}{2}'.format(day, month, year, time.split(":")[0])
+        date_str = "{0}{1}{2}".format(day, month, year, time.split(":")[0])
     else:
-        date_str = '{0}{1}'.format(month, year)
+        date_str = "{0}{1}".format(month, year)
 
-    output_path = f"{output_directory}/" \
-                  f"reanalysis-cerra-single-levels/" \
-                  f"{variable}/" \
-                  f"{variable}_{date_str}.nc"
+    output_path = (
+        f"{output_directory}/"
+        f"reanalysis-cerra-single-levels/"
+        f"{variable}/"
+        f"{variable}_{date_str}.nc"
+    )
     output_path = Path(output_path)
 
     if output_path.exists():
@@ -158,16 +160,18 @@ def download_era5_data(
 
     """
     if day and time:
-        date_str = '{0}{1}{2}_{3}'.format(day, month, year, time.split(":")[0])
+        date_str = "{0}{1}{2}_{3}".format(day, month, year, time.split(":")[0])
     elif day and not time:
-        date_str = '{0}{1}{2}'.format(day, month, year, time.split(":")[0])
+        date_str = "{0}{1}{2}".format(day, month, year, time.split(":")[0])
     else:
-        date_str = '{0}{1}'.format(month, year)
+        date_str = "{0}{1}".format(month, year)
 
-    output_path = f"{output_directory}/" \
-                  f"reanalysis-cerra-single-levels/" \
-                  f"{variable}/" \
-                  f"{variable}_{date_str}.nc"
+    output_path = (
+        f"{output_directory}/"
+        f"reanalysis-cerra-single-levels/"
+        f"{variable}/"
+        f"{variable}_{date_str}.nc"
+    )
     output_path = Path(output_path)
 
     if output_path.exists():

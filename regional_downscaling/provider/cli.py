@@ -1,7 +1,8 @@
 import click
-import xarray
 
-from regional_downscaling.provider.download import download_era5_data, download_cerra_data
+import xarray
+from regional_downscaling.provider.download import (download_cerra_data,
+                                                    download_era5_data)
 from regional_downscaling.provider.preprocess import preprocess
 
 
@@ -48,11 +49,7 @@ def launcher():
     type=int,
 )
 def provider_cli(
-        output_dir: str,
-        project: str,
-        variable: str,
-        year: int,
-        month: int
+    output_dir: str, project: str, variable: str, year: int, month: int
 ) -> None:
     """
     Execute the main datacica workflow.
@@ -84,7 +81,7 @@ def provider_cli(
             month="{:02.0f}".format(month),
             day=day,
             time=time,
-            output_directory=output_dir
+            output_directory=output_dir,
         )
     elif project == "ERA5":
         cds_variable = dict(tas="2m_temperature")
@@ -94,17 +91,14 @@ def provider_cli(
             month="{:02.0f}".format(month),
             day=day,
             time=time,
-            output_directory=output_dir
+            output_directory=output_dir,
         )
     else:
         raise NotImplementedError
 
     data_raw = xarray.open_dataset(data_path)
     data_processed = preprocess(
-        data_raw,
-        project=project,
-        variable="tas",
-        variable_map={"tas": "t2m"}
+        data_raw, project=project, variable="tas", variable_map={"tas": "t2m"}
     )
     data_processed.to_netcdf("/tmp/trial_processed.nc")
 

@@ -55,11 +55,6 @@ def download_cerra_data(
     cdsapi.api.CDSAPIError
         If the CDS API request fails.
 
-    Examples
-    --------
-    download_cerra_data(variable='2m_temperature', year='2020', month='12', day='31')
-    '/tmp/cerra-2m_temperature-surface_or_atmosphere-reanalysis-analysis-12312020-00.nc'
-
     """
 
     if day and time:
@@ -152,11 +147,6 @@ def download_era5_data(
     ------
     cdsapi.api.CDSAPIError
         If the CDS API request fails.
-
-    Examples
-    --------
-    download_era5_data(variable='2m_temperature', year='2021', month='01', day='01')
-    "/tmp/era5-2m_temperature-reanalysis-01012021-00.nc"
 
     """
     if day and time:

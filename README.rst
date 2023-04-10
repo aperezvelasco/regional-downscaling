@@ -1,60 +1,19 @@
 
 ****************************
-python-package-template-repo
+Regional downscaling
 ****************************
 
 |pypi_release| |pypi_status| |pypi_downloads| |docs|
 
-A template repository for developing Python packages
+A spatio-temporal downscaling package to perform regional downscaling over spatio-temporal datasets.
 
-**Quick start**
+In this particular case, we define a model to downscale the ERA5 dataset
+(https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels) to the
+CERRA dataset (https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-cerra-single-levels)
 
-Follow these steps to create a new repository from this template.
+![ERA5 reanalysis data for 01-01-2021 00:00](https://github.com/aperezvelasco/regional-downscaling/blob/main/reports/viz/era5_in_cerra_coverage-viz-2m_temperature-01012021-00.png)
 
-#. Click the `Use this template <https://github.com/esowc/python-package-template/generate>`_
-   button and create a new repository with your desired name, location and visibility.
-
-#. Clone the repository::
-
-     git clone git@github.com:esowc/<your-repository-name>.git
-     cd <your-repository-name>
-
-#. Remove sample code::
-
-     rm PACKAGE_NAME/sample.py
-     rm tests/test_sample.py
-
-#. Replace ``PACKAGE_NAME`` with your chosen package name::
-
-     NEW_PACKAGE_NAME=<your-package-name>
-     mv PACKAGE_NAME $NEW_PACKAGE_NAME
-     sed -i "" "s/PACKAGE_NAME/$NEW_PACKAGE_NAME/g" setup.py \
-        docs/source/conf.py \
-        docs/source/getting_started/installing.rst \
-        docs/source/index.rst \
-        $NEW_PACKAGE_NAME/__meta__.py
-
-#. Modify the contents of ``__meta__.py`` to reflect your repository. Note that there
-   is no need to update this same information in ``setup.py``, as it will be imported
-   directly from ``__meta__.py``.
-
-#. Modify the project url in ``setup.py`` to reflect your project's home in GitHub.
-
-#. Modify ``README.rst`` to reflect your repository. A number of `shield <https://shields.io/>`_
-   templates are included, and will need to be updated to match your repository if you want
-   to use them.
-
-**Usage tips**
-
-* Create an executable called ``qa`` containing the following::
-
-    black .
-    isort .
-
-  Add this to your path, and run it from the top-level of your repository before
-  committing changes::
-
-    qa .
+![CERRA reanalysis data for 01-01-2021 00:00](https://github.com/aperezvelasco/regional-downscaling/blob/main/reports/viz/cerra-viz-2m_temperature-01012021-00.png)
 
 .. |pypi_release| image:: https://img.shields.io/pypi/v/thermofeel?color=green
     :target: https://pypi.org/project/thermofeel

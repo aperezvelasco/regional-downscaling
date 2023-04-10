@@ -1,6 +1,6 @@
 import click
-
 import xarray
+
 from regional_downscaling.provider.download import (
     download_cerra_data,
     download_era5_data,

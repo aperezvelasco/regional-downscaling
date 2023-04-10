@@ -9,11 +9,16 @@ A spatio-temporal downscaling package to perform regional downscaling over spati
 
 In this particular case, we define a model to downscale the ERA5 dataset
 (https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels) to the
-CERRA dataset (https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-cerra-single-levels)
+CERRA dataset (https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-cerra-single-levels) .
 
-![ERA5 reanalysis data for 01-01-2021 00:00](reports/viz/era5_in_cerra_coverage-viz-2m_temperature-01012021-00.png)
+ERA5 reanalysis cropped to CERRA coverage:
 
-![CERRA reanalysis data for 01-01-2021 00:00](reports/viz/cerra-viz-2m_temperature-01012021-00.png)
+.. image:: https://github.com/aperezvelasco/regional-downscaling/blob/main/reports/viz/era5_in_cerra_coverage-viz-2m_temperature-01012021-00.png
+
+CERRA reanalysis
+
+.. image:: https://github.com/aperezvelasco/regional-downscaling/blob/main/reports/viz/cerra-viz-2m_temperature-01012021-00.png
+
 
 .. |pypi_release| image:: https://img.shields.io/pypi/v/thermofeel?color=green
     :target: https://pypi.org/project/thermofeel

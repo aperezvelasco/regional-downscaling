@@ -23,6 +23,18 @@ CERRA reanalysis:
 
 .. image:: https://github.com/aperezvelasco/regional-downscaling/blob/main/reports/viz/cerra-viz-2m_temperature-01012021-00.png
 
+\
+
+**Download and process data**
+
+A first version to download and process data of both ERA5 and CERRA reanalysis has been implemented. To download the data:
+
+>>> data_provider --output_dir /data --project ERA5 --variable tas --year 2020 --month 1
+
+It will download all the data available for temperature variable for the ERA5 reanalysis on January 2020
+
+
+
 
 .. |pypi_release| image:: https://img.shields.io/pypi/v/thermofeel?color=green
     :target: https://pypi.org/project/thermofeel

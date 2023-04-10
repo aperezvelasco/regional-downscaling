@@ -21,7 +21,7 @@ install_requires = ["numpy"]
 tests_require = ["pytest"]
 
 meta = {}
-exec(read("PACKAGE_NAME/__meta__.py"), meta)
+exec(read("regional_downscaling/__meta__.py"), meta)
 
 
 setuptools.setup(
@@ -55,4 +55,7 @@ setuptools.setup(
     ],
     tests_require=tests_require,
     test_suite="tests",
+    entry_points={
+        "console_scripts": ["data_provider = regional_downscaling.provider.cli:provider_cli"]
+    }
 )

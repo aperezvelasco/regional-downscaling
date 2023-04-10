@@ -1,6 +1,7 @@
-import xarray
 import datetime
+
 import pandas
+import xarray
 
 
 def preprocess(ds: xarray.Dataset, project: str, variable: str, variable_map: dict):
@@ -185,6 +186,7 @@ def rename_and_delete_variables(
         ds = ds.expand_dims("time")
     return ds
 
+
 def convert_units(ds: xarray.Dataset) -> xarray.Dataset:
     """
     Transform the data units.
@@ -259,4 +261,3 @@ def convert_units(ds: xarray.Dataset) -> xarray.Dataset:
             ds[ds_var] = ds[ds_var] * conversion[0] + conversion[1]
             ds[ds_var].attrs["units"] = conversion[2]
     return ds
-

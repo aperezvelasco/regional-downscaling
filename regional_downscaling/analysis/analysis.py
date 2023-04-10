@@ -1,6 +1,6 @@
 import xarray
-
-from regional_downscaling.provider.download import download_cerra_data, download_era5_data
+from regional_downscaling.provider.download import (download_cerra_data,
+                                                    download_era5_data)
 from regional_downscaling.provider.preprocess import preprocess
 
 
@@ -14,5 +14,5 @@ def main():
     return era5_data, cerra_data
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

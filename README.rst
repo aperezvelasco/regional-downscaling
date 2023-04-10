@@ -7,15 +7,19 @@ Regional downscaling
 
 A spatio-temporal downscaling package to perform regional downscaling over spatio-temporal datasets.
 
-In this particular case, we define a model to downscale the ERA5 dataset
-(https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels) to the
-CERRA dataset (https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-cerra-single-levels) .
+In this particular case, we define a model to perform downscaling from:
+
+- the ERA5 dataset (https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels)
+
+to:
+
+- the CERRA dataset (https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-cerra-single-levels) .
 
 ERA5 reanalysis cropped to CERRA coverage:
 
 .. image:: https://github.com/aperezvelasco/regional-downscaling/blob/main/reports/viz/era5_in_cerra_coverage-viz-2m_temperature-01012021-00.png
 
-CERRA reanalysis
+CERRA reanalysis:
 
 .. image:: https://github.com/aperezvelasco/regional-downscaling/blob/main/reports/viz/cerra-viz-2m_temperature-01012021-00.png
 

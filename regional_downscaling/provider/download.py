@@ -158,7 +158,7 @@ def download_era5_data(
 
     output_path = (
         f"{output_directory}/"
-        f"reanalysis-cerra-single-levels/"
+        f"reanalysis-era5-single-levels/"
         f"{variable}/"
         f"{variable}_{date_str}.nc"
     )

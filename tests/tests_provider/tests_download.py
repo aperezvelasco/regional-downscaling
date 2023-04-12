@@ -1,6 +1,5 @@
 from pathlib import Path
 
-import pytest
 from pytest_mock import MockerFixture
 
 from regional_downscaling.provider.download import download_cerra_data

@@ -10,3 +10,5 @@ dependencies:
   - certifi
   - openssl
   - cdsapi
+  - pytest
+  - pytest-mock

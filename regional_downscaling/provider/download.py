@@ -60,7 +60,7 @@ def download_cerra_data(
     if day and time:
         date_str = "{0}{1}{2}_{3}".format(day, month, year, time.split(":")[0])
     elif day and not time:
-        date_str = "{0}{1}{2}".format(day, month, year, time.split(":")[0])
+        date_str = "{0}{1}{2}".format(day, month, year)
     else:
         date_str = "{0}{1}".format(month, year)
 
@@ -152,7 +152,7 @@ def download_era5_data(
     if day and time:
         date_str = "{0}{1}{2}_{3}".format(day, month, year, time.split(":")[0])
     elif day and not time:
-        date_str = "{0}{1}{2}".format(day, month, year, time.split(":")[0])
+        date_str = "{0}{1}{2}".format(day, month, year)
     else:
         date_str = "{0}{1}".format(month, year)
 

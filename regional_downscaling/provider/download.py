@@ -50,27 +50,17 @@ def download_cerra_data(
     str
         The output path of the downloaded data.
 
-    Raises
-    ------
-    cdsapi.api.CDSAPIError
-        If the CDS API request fails.
-
     """
 
-    if day and time:
-        date_str = "{0}{1}{2}_{3}".format(day, month, year, time.split(":")[0])
-    elif day and not time:
-        date_str = "{0}{1}{2}".format(day, month, year)
-    else:
-        date_str = "{0}{1}".format(month, year)
-
-    output_path = (
-        f"{output_directory}/"
-        f"reanalysis-cerra-single-levels/"
-        f"{variable}/"
-        f"{variable}_{date_str}.nc"
+    output_path = get_output_path(
+        catalogue_entry="reanalysis-cerra-single-levels",
+        output_directory=output_directory,
+        variable=variable,
+        day=day,
+        month=month,
+        year=year,
+        hour=time,
     )
-    output_path = Path(output_path)
 
     if output_path.exists():
         return output_path
@@ -126,15 +116,15 @@ def download_era5_data(
     product_type : str, optional
         The product type of the data, defaults to 'reanalysis'.
     year : str, optional
-        The year of the data to provider, defaults to '2021'.
+        The year of the data to provide, defaults to '2021'.
     month : str or list, optional
-        The month of the data to provider, defaults to '01'.
+        The month of the data to provide, defaults to '01'.
     day : str or list, optional
-        The day of the data to provider, defaults to '01'.
+        The day of the data to provide, defaults to '01'.
     time : str or list, optional
-        The time of the data to provider in the format HH:MM, defaults to '00:00'.
+        The time of the data to provide in the format HH:MM, defaults to '00:00'.
     fmt : str, optional
-        The format to provider the data in, defaults to 'netcdf'.
+        The format to provide the data in, defaults to 'netcdf'.
     output_directory : str, optional
         The output directory to save the downloaded data, defaults to '/tmp'.
 
@@ -143,26 +133,16 @@ def download_era5_data(
     str
         The output path of the downloaded data.
 
-    Raises
-    ------
-    cdsapi.api.CDSAPIError
-        If the CDS API request fails.
-
     """
-    if day and time:
-        date_str = "{0}{1}{2}_{3}".format(day, month, year, time.split(":")[0])
-    elif day and not time:
-        date_str = "{0}{1}{2}".format(day, month, year)
-    else:
-        date_str = "{0}{1}".format(month, year)
-
-    output_path = (
-        f"{output_directory}/"
-        f"reanalysis-era5-single-levels/"
-        f"{variable}/"
-        f"{variable}_{date_str}.nc"
+    output_path = get_output_path(
+        catalogue_entry="reanalysis-era5-single-levels",
+        output_directory=output_directory,
+        variable=variable,
+        day=day,
+        month=month,
+        year=year,
+        hour=time,
     )
-    output_path = Path(output_path)
 
     if output_path.exists():
         return output_path
@@ -192,4 +172,52 @@ def download_era5_data(
         },
         output_path,
     )
+    return output_path
+
+
+def get_output_path(
+    catalogue_entry, output_directory, variable, day, month, year, hour
+):
+    """
+    Generate a file path for a given parameter combination.
+
+    Given the output directory, catalogue entry, variable, date, and time.
+
+    Parameters
+    ----------
+    output_directory : str
+        The directory in which the output file will be saved.
+    catalogue_entry : str
+        The catalogue entry for the output file.
+    variable : str
+        The variable name for the output file.
+    day : str or None
+        The day of the month for the output file (e.g. '01' for the 1st).
+        If `None`, the day will be excluded from the file name.
+    month : str
+        The month of the year for the output file (e.g. '01' for January).
+    year : str
+        The year for the output file (e.g. '2023').
+    hour : str or None
+        The hour of the day for the output file (e.g. '12:00' for noon).
+        If `None`, the hour will be excluded from the file name.
+
+    Returns
+    -------
+    output_path : pathlib.Path
+        The full file path for the output file.
+    """
+    if day and hour:
+        date_str = "{0}{1}{2}_{3}".format(day, month, year, hour.split(":")[0])
+    elif day and not hour:
+        date_str = "{0}{1}{2}".format(day, month, year)
+    else:
+        date_str = "{0}{1}".format(month, year)
+    output_path = (
+        f"{output_directory}/"
+        f"{catalogue_entry}/"
+        f"{variable}/"
+        f"{variable}_{date_str}.nc"
+    )
+    output_path = Path(output_path)
     return output_path

@@ -1,0 +1,12 @@
+name: regional-downscaling
+channels:
+  - defaults
+dependencies:
+  - python
+  - xarray
+  - netcdf4
+  - matplotlib
+  - ca-certificates
+  - certifi
+  - openssl
+  - cdsapi

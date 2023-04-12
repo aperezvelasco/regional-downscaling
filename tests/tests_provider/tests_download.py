@@ -9,7 +9,9 @@ from regional_downscaling.provider.download import download_cerra_data
 def test_download_cerra_data(mocker: MockerFixture, tmp_path: Path):
     # Set up mock CDSAPI client and retrieve method
     mock_retrieve = mocker.patch("cdsapi.Client.retrieve")
-    mock_cdsapi = mocker.patch("cdsapi.Client", return_value=mocker.Mock(retrieve=mock_retrieve))
+    mock_cdsapi = mocker.patch(
+        "cdsapi.Client", return_value=mocker.Mock(retrieve=mock_retrieve)
+    )
 
     # Set up test variables
     variable = "2m_temperature"
@@ -38,8 +40,10 @@ def test_download_cerra_data(mocker: MockerFixture, tmp_path: Path):
     )
 
     # Assert that the output path is correct
-    expected_output_path = tmp_path / f"reanalysis-cerra-single-levels/{variable}/" \
-                                      f"{variable}_{day}{month}{year}_{time.split(':')[0]}.nc"
+    expected_output_path = (
+        tmp_path / f"reanalysis-cerra-single-levels/{variable}/"
+        f"{variable}_{day}{month}{year}_{time.split(':')[0]}.nc"
+    )
     assert output_path == expected_output_path
 
     # Assert that the CDSAPI client was called with the correct arguments
@@ -59,5 +63,3 @@ def test_download_cerra_data(mocker: MockerFixture, tmp_path: Path):
         },
         output_path,
     )
-
-

@@ -6,7 +6,7 @@ import xesmf as xe
 def reproject_dataset(ds, input_crs, output_crs, output_file):
     """
     Reproject an xarray Dataset to a new coordinate reference system (CRS).
-    
+
     Parameters
     ----------
     ds : xarray.Dataset
@@ -18,24 +18,22 @@ def reproject_dataset(ds, input_crs, output_crs, output_file):
     output_file : str
         The output file path to save the reprojected dataset to.
     """
-    
+
     # Define the projection objects for the input and output CRS
     in_proj = pyproj.Proj(input_crs)
     out_proj = pyproj.Proj(output_crs)
 
     # Reproject the input data to the output CRS
-    lon, lat = pyproj.transform(in_proj, out_proj, ds.longitude.values, ds.latitude.values)
-    data, _, _ = pyproj.transform(in_proj, out_proj, ds.values, lon, lat, always_xy=True)
+    lon, lat = pyproj.transform(
+        in_proj, out_proj, ds.longitude.values, ds.latitude.values
+    )
+    data, _, _ = pyproj.transform(
+        in_proj, out_proj, ds.values, lon, lat, always_xy=True
+    )
 
     # Create a new xarray Dataset with the reprojected data
     ds_reprojected = xr.Dataset(
-        {
-            "data": (["lat", "lon"], data)
-        },
-        coords={
-            "lat": lat[:, 0],
-            "lon": lon[0, :]
-        }
+        {"data": (["lat", "lon"], data)}, coords={"lat": lat[:, 0], "lon": lon[0, :]}
     )
 
     # Set the coordinate reference system for the new Dataset
@@ -45,11 +43,10 @@ def reproject_dataset(ds, input_crs, output_crs, output_file):
     ds_reprojected.to_netcdf(output_file)
 
 
-
 def interpolate_dataset(ds, grid, method, output_file):
     """
     Interpolate an xarray Dataset to a new grid using xesmf.
-    
+
     Parameters
     ----------
     ds : xarray.Dataset
@@ -62,7 +59,7 @@ def interpolate_dataset(ds, grid, method, output_file):
     output_file : str
         The output file path to save the interpolated dataset to.
     """
-    
+
     # Create the xesmf regridder object
     regridder = xe.Regridder(ds, grid, method)
 
